@@ -5,6 +5,7 @@
 #include "Framework/GameObject.h"
 #include <string.h>
 #include <iostream>
+#include "Player.h"
 
 
 class Level{
@@ -27,6 +28,8 @@ private:
 
 	// Level objects
 	GameObject testSprite;
-	sf::Texture texture;
-
+	Player mushroom;
+	GameObject goomba;
+	sf::Texture texturemushroom;
+	sf::Texture texturgoomba;
 };

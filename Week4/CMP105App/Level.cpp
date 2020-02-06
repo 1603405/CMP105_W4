@@ -1,16 +1,25 @@
 #include "Level.h"
 
+
 Level::Level(sf::RenderWindow* hwnd, Input* in)
 {
 	window = hwnd;
 	input = in;
 
 	// initialise game objects
-	texture.loadFromFile("gfx/Mushroom.png");
+	texturgoomba.loadFromFile("gfx/Goomba.png");
+	texturemushroom.loadFromFile("gfx/Mushroom.png");
 
-	testSprite.setTexture(&texture);
-	testSprite.setSize(sf::Vector2f(100, 100));
-	testSprite.setPosition(100, 100);
+	goomba.setTexture(&texturgoomba);
+	goomba.setSize(sf::Vector2f(100, 100));
+	goomba.setPosition(500, 500);
+	goomba.setVelocity(500.0, 500.0);
+
+	mushroom.setTexture(&texturemushroom);
+	mushroom.setSize(sf::Vector2f(100, 100));
+	mushroom.setPosition(100, 100);
+	mushroom.setVelocity(500.0, 500.0);
+	mushroom.setInput(input);
 
 }
 
@@ -27,13 +36,13 @@ void Level::handleInput(float dt)
 	{
 		window->close();
 	}
-
+	mushroom.handleInput(dt);
 }
 
 // Update game objects
 void Level::update(float dt)
 {
-	
+
 }
 
 // Render level
@@ -41,8 +50,8 @@ void Level::render()
 {
 	beginDraw();
 
-	window->draw(testSprite);
-
+	window->draw(goomba);
+	window->draw(mushroom);
 	endDraw();
 }
 
