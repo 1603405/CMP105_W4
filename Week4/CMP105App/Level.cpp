@@ -14,6 +14,8 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 	goomba.setSize(sf::Vector2f(100, 100));
 	goomba.setPosition(500, 500);
 	goomba.setVelocity(500.0, 500.0);
+	speedx = 500.f;
+	speedy = 500.f;
 
 	mushroom.setTexture(&texturemushroom);
 	mushroom.setSize(sf::Vector2f(100, 100));
@@ -37,12 +39,34 @@ void Level::handleInput(float dt)
 		window->close();
 	}
 	mushroom.handleInput(dt);
+
 }
 
 // Update game objects
 void Level::update(float dt)
 {
+	goomba.move(speedx * dt, speedy * dt);
+	sf::Vector2u winPos = window->getSize(); //Vector2u creating variable with two values (unsigned variable)
+	sf::Vector2f objPos = goomba.getPosition();//Vector2f creating variable with two values (float variable)
+	if (objPos.x + 100 > winPos.x)
+	{
+		speedx = speedx * -1;
+	}
 
+	if (objPos.y + 100 > winPos.y)
+	{
+		speedy = speedy * -1;
+	}
+
+	if (objPos.x < 0)
+	{
+		speedx = speedx * -1;
+	}
+
+	if (objPos.y < 0)
+	{
+		speedy = speedy * -1;
+	}
 }
 
 // Render level

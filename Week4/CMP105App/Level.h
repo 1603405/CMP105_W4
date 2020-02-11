@@ -26,6 +26,10 @@ private:
 	sf::RenderWindow* window;
 	Input* input;
 
+	//SPEEEEEEEDD
+	float speedx;
+	float speedy;
+
 	// Level objects
 	GameObject testSprite;
 	Player mushroom;
